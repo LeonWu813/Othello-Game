@@ -1,0 +1,81 @@
+testing for start_game()
+Valid Input: None
+Expected Return: Display the stones on the middle as the start game set up no matter how big is the board. Add the empty cells nearby to the valid move set.
+Verified Every Possible: Yes
+Revealed Any Bugs: Yes
+
+
+testing for update()
+Valid Input: None
+Expected Return: Update the board and show the changes if there were.
+Verified Every Possible: Yes
+Revealed Any Bugs: Yes
+
+
+testing for player_take_stone()
+Valid Input: 3, 4
+Expected Return: Change the stone on position (4, 3) to the current player.
+Verified Every Possible: Yes
+Revealed Any Bugs: Yes
+
+Valid Input: 3, 4, Black_Player()
+Expected Return: Change the stone on position (4, 3) to black player.
+Verified Every Possible: Yes
+Revealed Any Bugs: Yes
+
+Invalid Input: 1, 1
+Expected Return: Nothing changes because the input (1, 1) is an invalid input.
+Verified Every Possible: Yes
+Revealed Any Bugs: Yes
+
+
+testing for change_turn()
+Valid Input: None
+Expected Return: Switch the current player and the next player.
+Verified Every Possible: Yes
+Revealed Any Bugs: Yes
+
+
+testing for check_valid_move()
+Valid Input: None
+Expected Return: Check all the valid move of the current player and added into the player's option move steps.
+Verified Every Possible: Yes
+Revealed Any Bugs: Yes
+
+
+testing for check_path()
+Valid Input: 0, 0, -1, 0
+Expected Return: Check the up-pointing path of the cell (0, 0) to see of there are valid moves for current users.
+Verified Every Possible: Yes
+Revealed Any Bugs: Yes
+
+
+testing for check_out_of_range()
+Valid Input: -1, 0
+Expected Return: Ture
+Verified Every Possible: Yes
+Revealed Any Bugs: Yes
+
+Valid Input: 0, 100
+Expected Return: Ture
+Verified Every Possible: Yes
+Revealed Any Bugs: Yes
+
+Valid Input: 4, 3
+Expected Return: False
+Verified Every Possible: Yes
+Revealed Any Bugs: Yes
+
+
+testing for update_posibble_move()
+Valid Input: Stone()
+Expected Return: Check the cell arounding and add empty one to the possible move set.
+Verified Every Possible: Yes
+Revealed Any Bugs: Yes
+
+
+testing for check_end_game()
+Valid Input: None
+Expected Return: Check if the current player have illegal moves
+Verified Every Possible: Yes
+Revealed Any Bugs: Yes

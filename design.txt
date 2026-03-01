@@ -1,0 +1,149 @@
+# Pseudocode for designing a Othello Game
+
+CLASS Game
+    PROPERTY board : Class Board
+        create a Board class
+
+    PROPERTY black_player : Class Black_Player
+        create a Black_Player class
+
+    PROPERTY white_player : Class White_Player
+        create a White_Player class
+
+    PROPERTY current_player : Class Player
+        point to the current player class, default to be the Black_Player class
+
+    PROPERTY next_player : Class Player
+        point to the current player class, default to be the Black_Player class
+    
+    PROPERTY possible_move : SET
+        a SET to store the possible move, which is the cell with at least one stone beside
+
+    
+    PROPERTY directions : List of Tuples (Int, Int)
+        A property to store the eight directions of a stone
+    
+
+    PROPERTY stone_count : INT
+        the count of the stones for a side of the entire
+    
+    PROPERTY end_game : BOOL
+        show if the game is end
+
+    METHOD start_game()
+        None -> NONE
+        Display the initial black & white stones and update the posiible move
+    
+    METHOD update()
+        None -> NONE
+        Dispay the updated version of the game
+
+    METHOD change_turn()
+        None -> NONE
+        Change player turn and update the valid move of the next player
+
+    METHOD player_take_stone(INT x, INT y)
+        INT, INT, CLASS Player -> NONE
+        Check if the player put the stone of the valid move and take it with the opponent stones between
+    
+    METHOD check_valid_move()
+        NONE -> NONE
+        Check the current player valid moves from the possible moves
+    
+    METHOD check_path()
+        INT, INT, INT, INT -> SET
+        Helper functions for check_valid_move() for checking one of the direciton of the stone
+    
+    METHOD end_game()
+        NONE -> NONE
+        count the rest of the space in the board, end game if it's empty space left
+
+
+CLASS Board
+    PROPERTY height : INT
+        a property shows the height of the board
+
+    PROPERTY width : INT
+        a property shows the width of the board
+
+    PROPERTY row : INT
+        a property shows the numbers of row
+    
+    PROPERTY column : INT
+        a property shows the numbers of column
+
+    PROPERTY board : LIST of LIST of stone
+        a property that stores all the stones on the board. Put all the stone class in same column in a list and put all column list in a list.
+
+    METHOD update_board_stone()
+        NONE -> NONE
+        display all the stones in the board base on the position and status
+
+
+CLASS stone
+    PROPERTY x : INT
+        x position of the stone
+    
+    PROPERTY y : INT
+        y position of the stone
+    
+    PROPERTY status : STRING
+        Value: "B", "W", default = "empty"
+        store the status of the stone
+    
+    METHOD display_stone()
+        NONE -> NONE
+        display the stone base on the status property
+    
+    def change_status(STRING):
+        STRING -> None
+        Change the status of the stone
+
+
+
+CLASS Player
+    PROPERTY points : INT
+        points of the player
+    
+    PROPERTY hold_stones : SET
+        stones of the player
+    
+    PROPERTY valid_moves : DIC
+        valid moves of the player
+    
+    PROPERTY color : STRING
+        Value: "B", "W", default = "empty"
+        points of the player
+
+    METHOD take_stone(CLASS Stone)
+        CLASS Stone -> NONE
+        Take the stone and added to the hold_stone list
+
+    METHOD lose_stone()
+        CLASS Stone -> NONE
+        Lose the stone and removed from the hold_stone list
+
+
+    METHOD update_valid_move(CLASS stone)
+        CLASS stone, LIST -> NONE
+        update the dictionary of the valid move. Key = valid move cell, Values = list of the stone would take if player put stone on this position
+    
+    METHOD update_valid_move(CLASS stone)
+        NONE -> NONE
+        update the valid move dictionary
+    
+    METHOD clean_valid_move(CLASS stone)
+        NONE -> NONE
+        clean the valid move dictionary
+
+
+CLASS White_Player(Player)
+    a class inherient from the PLayer Class represent the white player
+
+
+CLASS Black_Player(Player)
+    a class inherient from the PLayer Class represent the black player
+
+
+Function start_game():
+    Initialize a Game class

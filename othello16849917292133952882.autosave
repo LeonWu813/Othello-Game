@@ -1,0 +1,47 @@
+from game import Game
+from board import Board
+
+PLAYERS = 1
+countdown_start_time = 0
+WAIT_TIME = 50
+SIDE_CELL_COUNT = 4
+CELL_SIDE_LENGTH = 50
+BOARD_SIDE_LENGTH = SIDE_CELL_COUNT * CELL_SIDE_LENGTH
+name = ""
+
+game = Game(BOARD_SIDE_LENGTH, SIDE_CELL_COUNT, CELL_SIDE_LENGTH, PLAYERS)
+
+
+def setup():
+    size(BOARD_SIDE_LENGTH, BOARD_SIDE_LENGTH)
+    colorMode(RGB, 255)
+
+
+def draw():
+    global countdown_start_time, name
+    game.update()
+    if game.end_game:
+        game.show_game_result(name)
+
+    elif countdown_start_time > 0:
+        if millis() - countdown_start_time > WAIT_TIME:
+            game.com_take_stone()
+            countdown_start_time = 0
+
+def keyPressed():
+    global name
+    if keyCode == 8 or keyCode == 127:
+        name = name[:-1]
+    elif keyCode is 10:
+        game.record_result(name)
+    elif 32 <= keyCode <= 126:
+        name += key
+
+def mousePressed():
+    global countdown_start_time
+
+    x = mouseX // CELL_SIDE_LENGTH
+    y = mouseY // CELL_SIDE_LENGTH
+    if game.player_take_stone(y, x):
+        if PLAYERS == 1 and countdown_start_time == 0:
+            countdown_start_time = millis()
